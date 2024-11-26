@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed9f35114fe3c54d96a118cf5b3d9a6, type: 3}
+  m_Name: Level
+  m_EditorClassIdentifier: 
+  Rule: {fileID: 11400000, guid: 44cb10d5824b04a46b54ad21c2db7abb, type: 2}
+  Grounds:
+  - {fileID: 11400000, guid: 8823f5bf4e7fcf34b9174df5fc1d8e3b, type: 2}
+  - {fileID: 11400000, guid: 607a4a7c019050949be8feb7e09b8c77, type: 2}
+  - {fileID: 11400000, guid: 614a540738c76064fa8fbf05ec261701, type: 2}
+  TriggerTypeProbability: 0.732
+  TriggerItems:
+  - {fileID: 11400000, guid: 36a844e15c12e314892a3e0d5cfb88cc, type: 2}
+  - {fileID: 11400000, guid: 9fa26328eca935343af6ce1f728eefdf, type: 2}
+  - {fileID: 11400000, guid: 5c2e91a010983ff40b8fbaad2a29aaa9, type: 2}
+  LocomotionTypeProbability: 0.416
+  Locomotions:
+  - {fileID: 11400000, guid: 9433798ee2496b541b765397735a8185, type: 2}
+  LevelEndingItem: {fileID: 11400000, guid: 86d2d2b653b17c348baf9094674348a4, type: 2}

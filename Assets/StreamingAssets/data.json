@@ -1,0 +1,156 @@
+{
+  "$type": "Runner.AllConfig, Assembly-CSharp",
+  "levelSO": {
+    "$type": "Runner.StraightPathLevelSO, Assembly-CSharp",
+    "Rule": {
+      "$type": "Runner.StraightPathLevelRuleSO, Assembly-CSharp",
+      "Seed": 1,
+      "MapSize": {
+        "x": 10,
+        "y": 500
+      },
+      "GridSize": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "TriggerTypeProbability": 0.541,
+      "LocomotionTypeProbability": 0.382,
+      "SpawnColumnSpacing": 10.0,
+      "SpawnRowSpacing": 0.3,
+      "EndingRemainLength": 10.0,
+      "RuleType": "RandomOrderSequentialSpawn",
+      "TriggerItemRowCountOnStart": 0,
+      "TriggerTypeSequenceSpawnCount": 2
+    },
+    "Grounds": [
+      {
+        "$type": "Runner.GroundLevelItem, Assembly-CSharp",
+        "ItemUrl": "Runner/LevelPrefab/Ground/G1/Tile",
+        "Properbility": 0.117
+      },
+      {
+        "$type": "Runner.GroundLevelItem, Assembly-CSharp",
+        "ItemUrl": "Runner/LevelPrefab/Ground/G1/Tile 1",
+        "Properbility": 0.415
+      },
+      {
+        "$type": "Runner.GroundLevelItem, Assembly-CSharp",
+        "ItemUrl": "Runner/LevelPrefab/Ground/G1/Tile 2",
+        "Properbility": 0.514
+      }
+    ],
+    "TriggerItems": [
+      {
+        "$type": "Runner.OnTriggerLevelItem, Assembly-CSharp",
+        "PlayerCountChangeValue": -2,
+        "IsNeedTextShow": true,
+        "IsObstacle": false,
+        "IsNeedDestroy": false,
+        "DestroyTime": 0.0,
+        "ItemUrl": "Runner/LevelPrefab/Penalty/Penalty",
+        "Properbility": 0.285
+      },
+      {
+        "$type": "Runner.OnTriggerLevelItem, Assembly-CSharp",
+        "PlayerCountChangeValue": 5,
+        "IsNeedTextShow": true,
+        "IsObstacle": false,
+        "IsNeedDestroy": false,
+        "DestroyTime": 0.0,
+        "ItemUrl": "Runner/LevelPrefab/Reward/Reward",
+        "Properbility": 0.641
+      },
+      {
+        "$type": "Runner.OnTriggerLevelItem, Assembly-CSharp",
+        "PlayerCountChangeValue": -2,
+        "IsNeedTextShow": false,
+        "IsObstacle": false,
+        "IsNeedDestroy": false,
+        "DestroyTime": 0.0,
+        "ItemUrl": "Runner/LevelPrefab/Obstacles/Obstacle",
+        "Properbility": 0.641
+      }
+    ],
+    "Locomotions": [
+      {
+        "$type": "Runner.LocomotionLevelItem, Assembly-CSharp",
+        "MaxSpeed": 8.0,
+        "WalkSpeed": 1.5,
+        "Acceleration": 8.0,
+        "DamageToOther": 1,
+        "CanAffordDamage": 1,
+        "NPCAnimationSO": {
+          "$type": "Runner.HumanAnimationSO, Assembly-CSharp",
+          "IdleAnimUrl": "",
+          "WalkAnimUrl": "",
+          "RunAnimUrl": "",
+          "AttackAnimUrl": "",
+          "DeathAnimUrl": ""
+        },
+        "colliderType": "Capsule",
+        "ItemUrl": "Runner/Creature/NPC",
+        "Properbility": 1.0
+      }
+    ],
+    "LevelEndingItem": {
+      "$type": "Runner.LocomotionLevelItem, Assembly-CSharp",
+      "MaxSpeed": 8.0,
+      "WalkSpeed": 1.5,
+      "Acceleration": 8.0,
+      "DamageToOther": 5,
+      "CanAffordDamage": 50,
+      "NPCAnimationSO": {
+        "$type": "Runner.HumanAnimationSO, Assembly-CSharp",
+        "IdleAnimUrl": "",
+        "WalkAnimUrl": "",
+        "RunAnimUrl": "",
+        "AttackAnimUrl": "",
+        "DeathAnimUrl": ""
+      },
+      "colliderType": "Capsule",
+      "ItemUrl": "Runner/Creature/NPCBoss",
+      "Properbility": 1.0
+    }
+  },
+  "playerSO": {
+    "$type": "Runner.PlayerSO, Assembly-CSharp",
+    "PlayerUrl": "Runner/Creature/Player",
+    "InitCount": 1,
+    "MaxSpeed": 6.0,
+    "WalkSpeed": 3.0,
+    "Acceleration": 8.0,
+    "DamageToOther": 1,
+    "CanAffordDamage": 2,
+    "PlayerAnimationSO": {
+      "$type": "Runner.HumanAnimationSO, Assembly-CSharp",
+      "IdleAnimUrl": "",
+      "WalkAnimUrl": "",
+      "RunAnimUrl": "",
+      "AttackAnimUrl": "",
+      "DeathAnimUrl": ""
+    },
+    "MoveSpeed": 5.0,
+    "HorizontalMoveSpeed": 5.0,
+    "CameraVerticalLength": 5.0,
+    "CameraDistance": 15.0
+  },
+  "generalSO": {
+    "$type": "Runner.GeneralSO, Assembly-CSharp",
+    "MusicSO": {
+      "$type": "Runner.MusicSO, Assembly-CSharp",
+      "RuntimeMusic": "Runner/Music/excited",
+      "WinMusic": "Runner/Music/success",
+      "FailedMusic": "Runner/Music/down",
+      "CombatMusic": "Runner/Music/hit",
+      "EnterTriggerMusic": "Runner/Music/trigger"
+    },
+    "VFXSO": {
+      "$type": "Runner.VFXSO, Assembly-CSharp",
+      "OnPlayerHitVFX": "Runner/VFX/Flash/Flash_star_ellow_purple",
+      "OnPlayerDeathVFX": "Runner/VFX/Area/Area_star_ellow",
+      "OnPlayerSpawnVFX": "Runner/VFX/Area/Area_fire_red",
+      "OnPlayerEnterTriggerVFX": "Runner/VFX/Flash/Flash_blue_purple"
+    }
+  }
+}

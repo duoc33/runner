@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca499ad8c7ce9c439dcf67f64a26a30, type: 3}
+  m_Name: VFXSO_0
+  m_EditorClassIdentifier: 
+  OnPlayerHitVFX: Runner/VFX/Flash/Flash_star_ellow_purple
+  OnPlayerDeathVFX: Runner/VFX/Area/Area_star_ellow
+  OnPlayerSpawnVFX: Runner/VFX/Area/Area_fire_red
+  OnPlayerEnterTriggerVFX: Runner/VFX/Flash/Flash_blue_purple
