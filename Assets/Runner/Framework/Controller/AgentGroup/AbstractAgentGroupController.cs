@@ -15,7 +15,7 @@ namespace Runner
         protected abstract void OnUpdate();
         protected virtual void OnAttackProcess(BehavioursController self)
         {
-
+            
         }
         private List<BehavioursController> members;
         protected override void Awake()

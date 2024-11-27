@@ -13,7 +13,6 @@ namespace Runner
         public string CombatMusic;
         public string EnterTriggerMusic;
 
-        private AudioClip bgMusic;
         private AudioClip runtimeMusic;
         private AudioClip winMusic;
         private AudioClip failedMusic;

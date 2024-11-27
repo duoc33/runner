@@ -15,6 +15,8 @@ namespace Runner
             await levelSO.Download();
             await playerSO.Download();
             await generalSO.Download();
+            await UniTask.Yield();
+            StartMixComponents();
         }
         public override void StartMixComponents()
         {

@@ -20,7 +20,7 @@
       "SpawnRowSpacing": 0.3,
       "EndingRemainLength": 10.0,
       "RuleType": "RandomOrderSequentialSpawn",
-      "TriggerItemRowCountOnStart": 0,
+      "TriggerItemRowCountOnStart": 8,
       "TriggerTypeSequenceSpawnCount": 2
     },
     "Grounds": [

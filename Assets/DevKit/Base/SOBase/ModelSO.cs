@@ -9,8 +9,13 @@ namespace ScriptableObjectBase
         public PivotType pivotType;
         public ColliderType colliderType;
         public bool isTrigger = false; // 是否是触发器
+
         public bool isConvex = false; // 是否是凸多边形
+        
         public bool isStatic = false; // 是否是静态物体
+        
+        public bool IsNeedRescaleSize = false; // 是否需要重新设置模型大小
+        public Vector3 SizeInUnit = Vector3.one; // 模型单位大小
 
         public GameObject PostProcess(GameObject target)
         {
@@ -47,6 +52,28 @@ namespace ScriptableObjectBase
                 default: 
                     break;
             }
+
+            if(IsNeedRescaleSize)
+            {
+                float tolerance = 0.01f; // 设定一个容差值，根据需要进行调整
+                if (SizeInUnit != Vector3.zero && _size != Vector3.zero && (!_size.Equals(SizeInUnit)))
+                {
+                    // 检查各个维度的差距是否在容差范围内
+                    if (Mathf.Abs(SizeInUnit.x - _size.x) > tolerance ||
+                        Mathf.Abs(SizeInUnit.y - _size.y) > tolerance ||
+                        Mathf.Abs(SizeInUnit.z - _size.z) > tolerance)
+                    {
+                        // 计算缩放因子
+                        Vector3 scaleFactor = new Vector3(
+                            SizeInUnit.x / _size.x,
+                            SizeInUnit.y / _size.y,
+                            SizeInUnit.z / _size.z
+                        );
+                        _postModel.transform.localScale = scaleFactor;
+                    }
+                }
+            }
+
             _postModel.isStatic = isStatic;
             return _postModel;
         }

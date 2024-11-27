@@ -69,7 +69,6 @@ namespace RuntimeComponentAdjustTools
             // 如果随机数小于给定的概率，视为"失败"
             return randomValue >= probability;
         }
-
     }
 }
 

@@ -25,7 +25,7 @@ namespace Runner
         public void Move(GameObject target , float stopdistance = 0.5f)
         {
             agent?.SetRun();
-            agent?.SetDestination(target.transform.position,stopdistance,false);
+            agent?.SetDestination(target.transform.position , stopdistance , false);
             animator?.SetSpeed(agent.GetCurrentNormalizedSpeed());
         }
         public void Attack(Action<BehavioursController> OnAttackHandle = null)
@@ -75,7 +75,7 @@ namespace Runner
                 }
                 else
                 {
-                    Move(closestTarget.gameObject,selfRadius + targetRadius);
+                    Move(closestTarget.gameObject , selfRadius + targetRadius);
                 }
             }
             return false;

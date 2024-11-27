@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: StraightPathLevelRuleSO
   m_EditorClassIdentifier: 
   Seed: 5498
-  MapSize: {x: 10, y: 500}
+  MapSize: {x: 10, y: 200}
   GridSize: {x: 1, y: 1, z: 1}
-  TriggerItemRowCountOnStart: 0
   TriggerTypeProbability: 0.541
   LocomotionTypeProbability: 0.411
   SpawnColumnSpacing: 10
   SpawnRowSpacing: 0.3
   EndingRemainLength: 10
-  RuleType: 3
+  RuleType: 2
+  TriggerItemRowCountOnStart: 3
   TriggerTypeSequenceSpawnCount: 2

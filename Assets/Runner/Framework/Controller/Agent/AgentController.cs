@@ -20,7 +20,7 @@ namespace Runner
         {
             agent.speed = 0;
             agent.velocity = Vector3.zero;
-            agent.destination = transform.position;
+            // agent.destination = transform.position;
         }
         public void SetDestination(Vector3 destination, float stoppingDistance = 0 ,bool IgnoreStoppingDistance = false)
         {

@@ -131,12 +131,19 @@ namespace ScriptableObjectBase
         
         public virtual async UniTask Download() => await UniTask.Yield();
         public virtual void StartMixComponents(){}
+
+        public virtual async void StartUp()
+        {
+            InitServer();
+            await Download();
+            StartMixComponents();
+            await UniTask.Yield();
+        }
+
         public virtual GameObject Spawn()
         {
             return null;
         }
         public virtual void OnDestroy() { }
-        
-
     }
 }

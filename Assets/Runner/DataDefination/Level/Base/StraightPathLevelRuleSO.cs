@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using RuntimeComponentAdjustTools;
 using UnityEngine;
+using UnityEngine.AI;
 namespace Runner
 {
     public class StraightPathLevelRuleSO : ScriptableObject
@@ -252,6 +253,11 @@ namespace Runner
                     Transform group = new GameObject("LocomotionGroup").transform;
                     group.position = pos;
                     LastLevelItem = Boss.Spawn(pos, group);
+                    LastLevelItem.GetComponent<NavMeshAgent>().enabled = false;
+                    // Rigidbody rigidbody = LastLevelItem.AddComponent<Rigidbody>();
+                    // rigidbody.isKinematic = true;
+                    // rigidbody.useGravity = false;
+                    // group.gameObject.isStatic = true;
                     LocomotionGroup.Add(group);
                 }else{
                     LastLevelItem = Boss.Spawn(pos, parent);
