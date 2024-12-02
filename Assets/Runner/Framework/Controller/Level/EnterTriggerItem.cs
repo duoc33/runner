@@ -37,6 +37,7 @@ namespace Runner
             {
                 Destroy(gameObject, DestroyTime);
             }
+            // Destroy(gameObject);
         }
     }
     public class TriggerEnterLevelItemCmd : AbstractCommand
@@ -59,7 +60,7 @@ namespace Runner
             {
                 runnerModel = this.GetModel<RunnerModel>();
             }
-            runnerModel.VFXSO?.PlayEnterTriggerVFX(triggerPos, CenterOffset,modelSize);
+            runnerModel.VFXSO?.PlayEnterTriggerVFX(triggerPos + CenterOffset);
             runnerModel.MusicSO?.PlayEnterTriggerMusic();
             this.SendEvent(onTriggerLevelItem);
         }

@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using ScriptableObjectBase;
-using UnityEngine;
 namespace Runner
 {
     public class GeneralSO : SOBase

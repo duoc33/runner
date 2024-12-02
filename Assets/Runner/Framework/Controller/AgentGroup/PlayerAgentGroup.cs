@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using QFramework;
 using UnityEngine;
 namespace Runner
@@ -41,8 +42,13 @@ namespace Runner
         {
             int count = playerSO.InitCount;
             count = Mathf.Max(count, 1);
-            for (int i = 0; i < count ; i++)SpawnPlayer();
-
+            for (int i = 0; i < count ; i++) 
+            {
+                // Debug.Log(count);
+                // Debug.Log("1");
+                SpawnPlayer();
+            }
+            // Debug.Log(count);
             locomotions = Data.LocomotionGroup;
             locomotionsCurrentIndex = 0;
             Data.PlayerCount.Value = selfGroup.Count;
@@ -136,7 +142,7 @@ namespace Runner
         private void SpawnPlayer()
         {
             BehavioursController player = playerSO.Spawn(transform).GetComponent<BehavioursController>();
-            Data.VFXSO?.PlaySpawnVFX(player.transform ,default ,player.ModelSize);
+            Data.VFXSO?.PlaySpawnVFX(player.transform , default);
             selfGroup.Add(player);
         }
         private void DestroyPlayer()
@@ -144,7 +150,7 @@ namespace Runner
             if(selfGroup.Count > 0)
             {
                 BehavioursController player = selfGroup[selfGroup.Count - 1];
-                Data.VFXSO?.PlayDeathVFX(player.transform.position, default , player.ModelSize);
+                Data.VFXSO?.PlayDeathVFX(player.transform.position);
                 player.Death();
                 selfGroup.RemoveAt(selfGroup.Count - 1);
             }
@@ -152,7 +158,7 @@ namespace Runner
 
         protected override void OnAttackProcess(BehavioursController self)
         {
-            Data.VFXSO?.PlayPlayerHitVFX(self.transform.position, (self.transform.up * self.ModelSize.y) + (self.transform.forward * self.ModelSize.z) , self.ModelSize );
+            Data.VFXSO?.PlayPlayerHitVFX(self.transform.position + (self.transform.up * self.ModelSize.y) + (self.transform.forward * self.ModelSize.z));
         }
         private bool EndOnce = false;
         protected override void OnUpdate()

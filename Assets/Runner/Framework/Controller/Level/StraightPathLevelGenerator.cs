@@ -42,7 +42,7 @@ namespace Runner
     }
     public struct OnMapGenerated
     {
-
+        
     }
     
     public class OnStartGenerateMapCmd : AbstractCommand

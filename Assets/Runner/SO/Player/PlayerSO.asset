@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: PlayerSO
   m_EditorClassIdentifier: 
   PlayerUrl: Runner/Creature/Player
+  InitCount: 1
   MaxSpeed: 6
   WalkSpeed: 3
   Acceleration: 8
-  PlayerAttackDistance: 1.5
   DamageToOther: 1
   CanAffordDamage: 2
   PlayerAnimationSO: {fileID: 11400000, guid: 885c19986fa26534db5e28174ceac628, type: 2}
   MoveSpeed: 5
   HorizontalMoveSpeed: 5
-  CameraVerticalLength: 5
-  CameraDistance: 15
+  CameraVerticalLength: 10
+  CameraDistance: 20

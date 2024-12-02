@@ -63,6 +63,8 @@ namespace Runner
                     new System.Func<StraightPathLevelItem>[] { ChooseTriggerItem , ChooseLocomotionItem } ,
                     ChooseFuncByProbability,LevelEndingItem,
                     parent);
+            
+            StaticBatchingUtility.Combine(parent.gameObject);
 
             foreach (var item in Rule.LocomotionGroup)
             {

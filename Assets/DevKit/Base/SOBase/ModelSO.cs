@@ -73,8 +73,11 @@ namespace ScriptableObjectBase
                     }
                 }
             }
-
-            _postModel.isStatic = isStatic;
+            foreach (Transform child in _postModel.GetComponentsInChildren<Transform>())
+            {
+                child.gameObject.isStatic = isStatic;
+            }
+            
             return _postModel;
         }
         public Vector3 GetModelSize()=>_size;

@@ -12,6 +12,7 @@ public class ParseMethod : MonoBehaviour
     {
         GameLogic.PARSE_ACTION = async (string json) => {
 
+
             SOBase.InitServer();
 
             var list = Serializer.Deserialize<List<object>>(json);
@@ -23,13 +24,11 @@ public class ParseMethod : MonoBehaviour
                 }
                 else if(item is SOBase sOBase){
                     await sOBase.Download();
+                    sOBase.StartMixComponents();
                 }
             }
 
             return true;
         };
     }
-
-
-
 }

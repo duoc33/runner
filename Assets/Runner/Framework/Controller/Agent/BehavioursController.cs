@@ -13,6 +13,8 @@ namespace Runner
         private int _canAffordDamageCount;
         private AgentController agent;
         private HumanAnimatorController animator;
+
+        public Action<GameObject> WhenDestroy;
         
         void Start()
         {
@@ -21,6 +23,15 @@ namespace Runner
             IsDeath = false;
             agent = GetComponent<AgentController>();
             animator = GetComponent<HumanAnimatorController>();
+        }
+        void OnEnable()
+        {
+            animator?.ResetAnim();
+            IsDeath = false;
+        }
+        void OnDisable()
+        {
+            IsDeath = true;
         }
         public void Move(GameObject target , float stopdistance = 0.5f)
         {
@@ -42,17 +53,24 @@ namespace Runner
                 Death();
             }
         }
-        public void Death(float DestoryTime = 1.8f)
+        public void Death()
         {
             agent?.SetStopping();
             animator?.PlayDeath();
-            Destroy(gameObject, DestoryTime);
             IsDeath = true;
+            if(WhenDestroy == null)
+            {
+                Destroy(gameObject,1.8f);
+            }
+            else
+            {
+                WhenDestroy.Invoke(this.gameObject);
+            }
+            
         }
 
         private bool IsDeath = false;
 
-        //
         public bool AgentGroupDetect(ref List<BehavioursController> enemies , Action<BehavioursController> OnAttackHandle = null)
         {
             if(IsDeath) return true;

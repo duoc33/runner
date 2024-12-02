@@ -72,37 +72,50 @@ namespace Runner
             motion.horizontalMoveSpeed = HorizontalMoveSpeed;
             motion.CameraVerticalLength = CameraVerticalLength;
             motion.CameraDistance = CameraDistance;
-        }
 
-        private GameObject PlayerGroupTarget;
-        
-        public GameObject Spawn(Transform parent)
-        {
-            GameObject player = Instantiate(modelSO.GetPrefab(),parent.position,parent.rotation);
-            player.tag = "Player";
+
+            GameObject prefab = modelSO.GetPrefab();
+            prefab.tag = "Player";
             //时间节点考虑一下
             NavMeshAgentComponent Agent = CreateInstance<NavMeshAgentComponent>(); // AgentController
             Agent.Acceleration = Acceleration;
             Agent.MaxSpeed = MaxSpeed;
             Agent.WalkSpeed = WalkSpeed;
-            Agent.Decorate(player, modelSO.GetModelSize());
+            Agent.Decorate(prefab, modelSO.GetModelSize());
 
-            BehavioursController behavioursController = player.AddComponent<BehavioursController>();
+            BehavioursController behavioursController = prefab.AddComponent<BehavioursController>();
             behavioursController.CanAffordDamageCount = CanAffordDamage;
             behavioursController.Damge = DamageToOther; 
             behavioursController.ModelSize = modelSO.GetModelSize();
+
+            if(playerPool!=null)
+            {
+                Destroy(playerPool.gameObject);
+            }
+            playerPool= new GameObject("PlayerPool").AddComponent<PlayerPool>();
+            playerPool.Prefab = prefab;
+        }
+
+        private GameObject PlayerGroupTarget;
+        private PlayerPool playerPool;
+        public GameObject Spawn(Transform parent)
+        {
+            GameObject player = playerPool.Get();
+            player.transform.position =  parent.position ;
+            player.transform.rotation =  parent.rotation ;
             return player;
         }
-        public override GameObject Spawn()
-        {
-            return Instantiate(modelSO.GetPrefab());
-        }
+        
         
         public override void OnDestroy()
         {
             base.OnDestroy();
             Destroy(modelSO);
             Destroy(PlayerGroupTarget);
+            if(playerPool!=null)
+            {
+                Destroy(playerPool.gameObject);
+            }
         }
     }
 }
