@@ -5,7 +5,6 @@ using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using ScriptableObjectBase;
 using UnityEngine;
-using UnityEngine.AI;
 namespace Runner
 {
     public abstract class StraightPathLevelItem : SOBase

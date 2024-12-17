@@ -27,6 +27,11 @@ namespace Runner
         void OnEnable()
         {
             animator?.ResetAnim();
+            if(agent!=null)
+            {
+                agent.enabled = true;
+            }
+            GetComponent<Collider>().enabled = true;
             IsDeath = false;
         }
         void OnDisable()
@@ -57,6 +62,11 @@ namespace Runner
         {
             agent?.SetStopping();
             animator?.PlayDeath();
+            if(agent!=null)
+            {
+                agent.enabled = false;
+            }
+            GetComponent<Collider>().enabled = false;
             IsDeath = true;
             if(WhenDestroy == null)
             {

@@ -55,8 +55,6 @@ namespace Runner
             modelSO.isStatic = false;
             
             GameObject newGameObject = modelSO.PostProcess(target);
-            
-            
 
             return newGameObject;
         }
@@ -72,7 +70,6 @@ namespace Runner
             motion.horizontalMoveSpeed = HorizontalMoveSpeed;
             motion.CameraVerticalLength = CameraVerticalLength;
             motion.CameraDistance = CameraDistance;
-
 
             GameObject prefab = modelSO.GetPrefab();
             prefab.tag = "Player";

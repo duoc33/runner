@@ -30,6 +30,10 @@ namespace Runner
                 ps.Play();
             }
         }
+        protected override void OnDestroyAction(GameObject value)
+        {
+            Destroy(value);
+        }
         protected override void OnReleaseAction(GameObject value)
         {
             if(value == null) return;

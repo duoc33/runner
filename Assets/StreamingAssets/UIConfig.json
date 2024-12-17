@@ -1,0 +1,10 @@
+{
+  "$type": "Runner.UIConfig, Assembly-CSharp",
+  "StartPanelImage": null,
+  "StartButtonImage": null,
+  "ScoreImage": null,
+  "PlayerCountImage": null,
+  "SuccessPanelImage": null,
+  "FailedPanelImage": null,
+  "PlayAgainButtonImage": null
+}

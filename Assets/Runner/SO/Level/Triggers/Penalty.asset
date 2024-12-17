@@ -16,3 +16,6 @@ MonoBehaviour:
   Properbility: 0.285
   PlayerCountChangeValue: -2
   IsNeedTextShow: 1
+  IsObstacle: 0
+  IsNeedDestroy: 0
+  DestroyTime: 0

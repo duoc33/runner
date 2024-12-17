@@ -19,7 +19,6 @@ namespace Runner
                 
                 text.text = $"Success !!!\nPlayer Remain Count : {Data.PlayerCount}.\nScore : {Data.Score}";
             }
-            
         }
     }
 }

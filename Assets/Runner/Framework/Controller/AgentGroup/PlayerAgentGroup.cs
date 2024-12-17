@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using QFramework;
+using RuntimeComponentAdjustTools;
 using UnityEngine;
 namespace Runner
 {
@@ -24,6 +25,8 @@ namespace Runner
         private List<BehavioursController> currentEnemies;
         private Transform currentLocomotion;
         
+
+        // private int CountInOneRow;
         
         void Start()
         {
@@ -34,6 +37,8 @@ namespace Runner
             motion = GetComponent<PlayerGroupTargetMotion>();
             this.RegisterEvent<OnMapGenerated>(InitPlayerAgent).UnRegisterWhenGameObjectDestroyed(this);
             this.RegisterEvent<OnTriggerLevelItemEvent>(PlayerCountAdd).UnRegisterWhenGameObjectDestroyed(this);
+
+            // CountInOneRow = (int)(Data.levelSO.Rule.GetMapRealWidth() / playerSO.modelSO.GetModelSize().x);
         }
 
         private bool IsStart = false;
@@ -56,6 +61,18 @@ namespace Runner
             IsLocomotionEnd = false;
             
             motion.StartMove();
+        }
+
+        private Bounds GetBounds()
+        {
+            if(selfGroup.Count == 0) return default;
+            Bounds group = default;
+            foreach (var item in selfGroup)
+            {
+                Bounds bounds = item.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().bounds;
+                group.Encapsulate(bounds);
+            }
+            return group;
         }
         
         private void PlayerCountAdd(OnTriggerLevelItemEvent e)
@@ -80,6 +97,7 @@ namespace Runner
                     DestroyPlayer();
                 }
             }
+            // motion.AdjustCamera(GetBounds()) ;
         }
         
         private bool IsLocomotionEnd = false;

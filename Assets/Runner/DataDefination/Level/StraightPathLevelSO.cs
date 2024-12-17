@@ -57,6 +57,7 @@ namespace Runner
         {
             StraightPathLevelRuleSO.GridSizeValue = Rule.GridSize;
             UnityEngine.Random.InitState(Rule.Seed);
+            Debug.Log(Rule.Seed);
             Rule.SpawnGround(ChooseGround ,parent);
             await navMeshBuilder.BuildNavMeshAsync(parent.gameObject).ToUniTask();
             Rule.SpawnLevelItem(ChooseTpyeItem ,
@@ -117,7 +118,6 @@ namespace Runner
         }
         public override void OnDestroy()
         {
-            
             if(Generator!=null)
             {
                 Destroy(Generator.gameObject);

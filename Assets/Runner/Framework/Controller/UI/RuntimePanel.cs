@@ -7,13 +7,11 @@ namespace Runner
 {
     public class RuntimePanel : RunnerController
     {
-        private TextMeshProUGUI score;
-        private TextMeshProUGUI player;
+        public TextMeshProUGUI score;
+        public TextMeshProUGUI player;
 
         void Start()
         {
-            score = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            player = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
             Data.Score.RegisterWithInitValue(ScoreChange).UnRegisterWhenGameObjectDestroyed(this);
             Data.PlayerCount.RegisterWithInitValue(PlayerChange).UnRegisterWhenGameObjectDestroyed(this);
         }

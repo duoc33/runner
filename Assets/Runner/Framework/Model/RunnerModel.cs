@@ -7,6 +7,8 @@ namespace Runner
     public class RunnerModel : AbstractModel
     {
         #region General相关的
+        public AllConfig Runner;
+
         public GeneralSO GeneralSO;
 
         public MusicSO MusicSO => GeneralSO?.MusicSO;

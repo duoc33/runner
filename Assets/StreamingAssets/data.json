@@ -4,10 +4,10 @@
     "$type": "Runner.StraightPathLevelSO, Assembly-CSharp",
     "Rule": {
       "$type": "Runner.StraightPathLevelRuleSO, Assembly-CSharp",
-      "Seed": 1,
+      "Seed": 5498,
       "MapSize": {
         "x": 10,
-        "y": 500
+        "y": 200
       },
       "GridSize": {
         "x": 1.0,
@@ -15,12 +15,12 @@
         "z": 1.0
       },
       "TriggerTypeProbability": 0.541,
-      "LocomotionTypeProbability": 0.382,
+      "LocomotionTypeProbability": 0.411,
       "SpawnColumnSpacing": 10.0,
       "SpawnRowSpacing": 0.3,
       "EndingRemainLength": 10.0,
-      "RuleType": "RandomOrderSequentialSpawn",
-      "TriggerItemRowCountOnStart": 8,
+      "RuleType": "StrictSequentialSpawn",
+      "TriggerItemRowCountOnStart": 3,
       "TriggerTypeSequenceSpawnCount": 2
     },
     "Grounds": [
@@ -69,7 +69,7 @@
         "IsNeedDestroy": false,
         "DestroyTime": 0.0,
         "ItemUrl": "Runner/LevelPrefab/Obstacles/Obstacle",
-        "Properbility": 0.641
+        "Properbility": 0.3
       }
     ],
     "Locomotions": [
@@ -132,8 +132,8 @@
     },
     "MoveSpeed": 5.0,
     "HorizontalMoveSpeed": 5.0,
-    "CameraVerticalLength": 5.0,
-    "CameraDistance": 15.0
+    "CameraVerticalLength": 10.0,
+    "CameraDistance": 20.0
   },
   "generalSO": {
     "$type": "Runner.GeneralSO, Assembly-CSharp",
@@ -148,9 +148,29 @@
     "VFXSO": {
       "$type": "Runner.VFXSO, Assembly-CSharp",
       "OnPlayerHitVFX": "Runner/VFX/Flash/Flash_star_ellow_purple",
+      "PlayerHitVFXScaleOffset": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
       "OnPlayerDeathVFX": "Runner/VFX/Area/Area_star_ellow",
+      "PlayerDeathVFXScaleOffset": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
       "OnPlayerSpawnVFX": "Runner/VFX/Area/Area_fire_red",
-      "OnPlayerEnterTriggerVFX": "Runner/VFX/Flash/Flash_blue_purple"
+      "PlayerSpawnVFXScaleOffset": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "OnPlayerEnterTriggerVFX": "Runner/VFX/Flash/Flash_blue_purple",
+      "PlayerEnterTriggerVFXScaleOffset": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      }
     }
   }
 }

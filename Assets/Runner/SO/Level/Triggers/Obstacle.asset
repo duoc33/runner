@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Obstacle
   m_EditorClassIdentifier: 
   ItemUrl: Runner/LevelPrefab/Obstacles/Obstacle
-  Properbility: 0.641
+  Properbility: 0.3
   PlayerCountChangeValue: -2
   IsNeedTextShow: 0
   IsObstacle: 0
+  IsNeedDestroy: 0
+  DestroyTime: 0

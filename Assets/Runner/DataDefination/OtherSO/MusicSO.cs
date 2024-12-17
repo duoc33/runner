@@ -46,11 +46,6 @@ namespace Runner
 
         public override void OnDestroy()
         {
-            // Destroy(bgMusic);
-            // Destroy(runtimeMusic);
-            // Destroy(winMusic);
-            // Destroy(failedMusic);
-            // Destroy(killEnemyMusic);
             Destroy(musicGO);
         }
 
@@ -90,9 +85,13 @@ namespace Runner
                 return;
             }
             AudioSource audioSource = audioSources[index];
+            if(audioSource==null) return;
             if(stop)
             {
-                audioSource.Stop();
+                if(audioSource.isPlaying)
+                {
+                    audioSource.Stop();
+                }
                 return;
             }
             audioSource.loop = loop;

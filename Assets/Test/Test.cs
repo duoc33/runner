@@ -10,6 +10,7 @@ using UnityEngine.AI;
 using QFramework;
 using UnityEngine.InputSystem;
 using Foundation;
+using Managers;
 
 public class Test : RunnerController
 {
@@ -21,9 +22,10 @@ public class Test : RunnerController
     }
     void Start()
     {
-        Run().Forget();
-        // string Config = Serializer.Serialize(allConfig);
-        // Serializer.WriteAllText(Config);
+       
+        string json = Serializer.Serialize( ScriptableObject.CreateInstance<UIConfig>());
+        Serializer.WriteAllText(json,null, "UIConfig");
+        // Run().Forget();
     }
     public async UniTask Run()
     {

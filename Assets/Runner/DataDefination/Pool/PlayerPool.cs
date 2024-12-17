@@ -30,10 +30,18 @@ namespace Runner
         {
             value.SetActive(true);
         }
+        protected override void OnDestroyAction(GameObject value)
+        {
+            Destroy(value);
+        }
         protected override void OnReleaseAction(GameObject value)
         {
             if(value == null) return;
             value.SetActive(false);
+        }
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
         }
     }
 }

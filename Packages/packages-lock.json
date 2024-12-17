@@ -1,27 +1,13 @@
 {
   "dependencies": {
-    "com.cysharp.unitask": {
-      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "f9fd769be7c634610f2a61aa914a1a55f34740e1"
-    },
-    "com.inc8877.addressables-master": {
-      "version": "https://github.com/inc8877/AddressablesMaster.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.addressables": "1.6.0"
-      },
-      "hash": "3b324f09ef77b3c6a05daa8bbc52811944d73a8b"
-    },
     "com.opencoord.aigc.managers": {
       "version": "https://git.agiplusone.com/apo/engineering/portalhiker-eng/unity-frontend/aigc-game/portablemanagers.git#dev_guangyu",
       "depth": 0,
       "source": "git",
-      "dependencies": {},
-      "hash": "bc025e9bc32c6cb52514fa0cb2e292763776c99b"
+      "dependencies": {
+        "com.unity.addressables": "1.19.19"
+      },
+      "hash": "a6ced7f038876f478491dda93bf24ea4d73c9c24"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

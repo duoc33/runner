@@ -16,12 +16,13 @@ namespace Runner
         {
             
         }
+        public GameObject InitUI()
+        {
+            uiCanvas = Object.Instantiate(Resources.Load<GameObject>(UICanvasPath));
+            return uiCanvas;
+        }
         public void Show(int index)
         {
-            if(uiCanvas == null)
-            {
-                uiCanvas = Object.Instantiate(Resources.Load<GameObject>(UICanvasPath));
-            }
             uiCanvas.transform.GetChild(index).gameObject.SetActive(true);
         }
         public void Hide(int index)
@@ -31,11 +32,6 @@ namespace Runner
                 uiCanvas = Object.Instantiate(Resources.Load<GameObject>(UICanvasPath));
             }
             uiCanvas.transform.GetChild(index).gameObject.SetActive(false);
-        }
-
-        protected override void OnDeinit()
-        {
-            Object.Destroy(uiCanvas);
         }
     }
 }

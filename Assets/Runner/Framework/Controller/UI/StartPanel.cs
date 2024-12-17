@@ -20,7 +20,7 @@ namespace Runner
         }
         void OnDestroy()
         {
-            btnStart.onClick.RemoveListener(StartGame);
+            btnStart?.onClick.RemoveListener(StartGame);
         }
     }
 }

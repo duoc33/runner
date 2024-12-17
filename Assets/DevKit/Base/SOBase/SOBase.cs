@@ -65,6 +65,7 @@ namespace ScriptableObjectBase
                 return request.asset as AnimationClip;
             };
             GetResHandler = (str) => Resources.Load<UnityEngine.Object>(str);
+            PostProcessGameObjectsPool?.Clear();
         }
         public static void InitServer()
         {
@@ -80,6 +81,7 @@ namespace ScriptableObjectBase
             DestroyImmediate(PostProcessGameObjectHolder);
             PostProcessGameObjectsPool?.Clear();
             DLUtils.ClearCache();
+            PostProcessGameObjectCount = 0;
         }
         
         #endregion
@@ -88,6 +90,7 @@ namespace ScriptableObjectBase
         
         private static GameObject PostProcessGameObjectHolder;
         private static Dictionary<string,GameObject> PostProcessGameObjectsPool;
+        private static int PostProcessGameObjectCount = 0;
         protected static GameObject GetPooledGameObject(string url)
         {
             if(PostProcessGameObjectsPool.ContainsKey(url))
@@ -96,21 +99,27 @@ namespace ScriptableObjectBase
             }
             return null;
         }
-        protected static async UniTask DownloadAndPostProcessGameObject(string url, Func<GameObject,GameObject> PostProcessHandler = null ,Func<GameObject , UniTask<GameObject>> PostProcessAsyncHandler = null , bool IsInstantiate = false)
+        protected static async UniTask<string> DownloadAndPostProcessGameObject(string url, Func<GameObject,GameObject> PostProcessHandler = null ,Func<GameObject , UniTask<GameObject>> PostProcessAsyncHandler = null , bool IsInstantiate = false)
         {
             GameObject target = await DownloadModelHandler.Invoke(url);
             if(target == null) 
             {
                 Debug.LogError("Failed to download model: " + url);
-                return;
+                return null;
             }
-            PostProcessGameObjectsPool ??= new Dictionary<string, GameObject>();
+            if(PostProcessGameObjectsPool==null)
+            {
+                PostProcessGameObjectsPool = new Dictionary<string,GameObject>();
+            }
             if(PostProcessGameObjectsPool.ContainsKey(url))
             {
-                Debug.LogWarning("PostProcessGameObjectsPool already exists for url: " + url);
-                return;
+                // url += PostProcessGameObjectCount ++ ;   
             }
-            PostProcessGameObjectHolder ??= new GameObject("PostProcessGameObjectHolder");
+            if(PostProcessGameObjectHolder == null)
+            {
+                PostProcessGameObjectHolder = new GameObject("PostProcessGameObjectHolder");
+            }
+            
             PostProcessGameObjectHolder.SetActive(false);
             GameObject poolItem = IsInstantiate ? target : Instantiate(target,Vector3.zero,Quaternion.identity) ;
             poolItem.name = target.name;
@@ -123,8 +132,11 @@ namespace ScriptableObjectBase
             {
                 newParent = await PostProcessAsyncHandler.Invoke( newParent ==null ? poolItem : newParent);
             }
+            
             newParent.transform.SetParent(PostProcessGameObjectHolder.transform);
             PostProcessGameObjectsPool[url] = newParent;
+
+            return url;
         }
 
         #endregion
