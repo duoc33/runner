@@ -21,7 +21,8 @@ namespace Runner
         }
         protected override List<StraightPathLevelItemComponent> AddComponents()
         {
-            List<StraightPathLevelItemComponent> components = new List<StraightPathLevelItemComponent>();
+            List<StraightPathLevelItemComponent> components = new List<StraightPathLevelItemComponent>();            
+
             var scoreAndPlayerCountChangeComponent = CreateInstance<ScoreAndPlayerCountChangeComponent>();
             scoreAndPlayerCountChangeComponent.PlayerCountChangeValue = PlayerCountChangeValue;
             scoreAndPlayerCountChangeComponent.IsNeedTextShow = IsNeedTextShow;
@@ -33,7 +34,12 @@ namespace Runner
             {
                 components.Add(CreateInstance<ObstacleComponent>());
             }
+
             return components;
+        }
+        protected override void HandleOnInstantiate(GameObject gameObject, ModelSO model)
+        {
+            base.HandleOnInstantiate(gameObject, model);
         }
         protected override void HandlePostProcess(GameObject gameObject, ModelSO model)
         {

@@ -1,9 +1,9 @@
 {
-  "$type": "Runner.AllConfig, Assembly-CSharp",
+  "$type": "Runner.AllConfig, Runner",
   "levelSO": {
-    "$type": "Runner.StraightPathLevelSO, Assembly-CSharp",
+    "$type": "Runner.StraightPathLevelSO, Runner",
     "Rule": {
-      "$type": "Runner.StraightPathLevelRuleSO, Assembly-CSharp",
+      "$type": "Runner.StraightPathLevelRuleSO, Runner",
       "Seed": 5498,
       "MapSize": {
         "x": 10,
@@ -16,7 +16,7 @@
       },
       "TriggerTypeProbability": 0.541,
       "LocomotionTypeProbability": 0.411,
-      "SpawnColumnSpacing": 10.0,
+      "SpawnColumnSpacing": 20.0,
       "SpawnRowSpacing": 0.3,
       "EndingRemainLength": 10.0,
       "RuleType": "StrictSequentialSpawn",
@@ -25,48 +25,48 @@
     },
     "Grounds": [
       {
-        "$type": "Runner.GroundLevelItem, Assembly-CSharp",
+        "$type": "Runner.GroundLevelItem, Runner",
         "ItemUrl": "Runner/LevelPrefab/Ground/G1/Tile",
         "Properbility": 0.117
       },
       {
-        "$type": "Runner.GroundLevelItem, Assembly-CSharp",
+        "$type": "Runner.GroundLevelItem, Runner",
         "ItemUrl": "Runner/LevelPrefab/Ground/G1/Tile 1",
         "Properbility": 0.415
       },
       {
-        "$type": "Runner.GroundLevelItem, Assembly-CSharp",
+        "$type": "Runner.GroundLevelItem, Runner",
         "ItemUrl": "Runner/LevelPrefab/Ground/G1/Tile 2",
         "Properbility": 0.514
       }
     ],
     "TriggerItems": [
       {
-        "$type": "Runner.OnTriggerLevelItem, Assembly-CSharp",
+        "$type": "Runner.OnTriggerLevelItem, Runner",
         "PlayerCountChangeValue": -2,
         "IsNeedTextShow": true,
         "IsObstacle": false,
-        "IsNeedDestroy": false,
+        "IsNeedDestroy": true,
         "DestroyTime": 0.0,
         "ItemUrl": "Runner/LevelPrefab/Penalty/Penalty",
         "Properbility": 0.285
       },
       {
-        "$type": "Runner.OnTriggerLevelItem, Assembly-CSharp",
+        "$type": "Runner.OnTriggerLevelItem, Runner",
         "PlayerCountChangeValue": 5,
         "IsNeedTextShow": true,
         "IsObstacle": false,
-        "IsNeedDestroy": false,
+        "IsNeedDestroy": true,
         "DestroyTime": 0.0,
         "ItemUrl": "Runner/LevelPrefab/Reward/Reward",
         "Properbility": 0.641
       },
       {
-        "$type": "Runner.OnTriggerLevelItem, Assembly-CSharp",
+        "$type": "Runner.OnTriggerLevelItem, Runner",
         "PlayerCountChangeValue": -2,
         "IsNeedTextShow": false,
         "IsObstacle": false,
-        "IsNeedDestroy": false,
+        "IsNeedDestroy": true,
         "DestroyTime": 0.0,
         "ItemUrl": "Runner/LevelPrefab/Obstacles/Obstacle",
         "Properbility": 0.3
@@ -74,14 +74,14 @@
     ],
     "Locomotions": [
       {
-        "$type": "Runner.LocomotionLevelItem, Assembly-CSharp",
+        "$type": "Runner.LocomotionLevelItem, Runner",
         "MaxSpeed": 8.0,
         "WalkSpeed": 1.5,
         "Acceleration": 8.0,
         "DamageToOther": 1,
         "CanAffordDamage": 1,
         "NPCAnimationSO": {
-          "$type": "Runner.HumanAnimationSO, Assembly-CSharp",
+          "$type": "Runner.HumanAnimationSO, Runner",
           "IdleAnimUrl": "",
           "WalkAnimUrl": "",
           "RunAnimUrl": "",
@@ -94,14 +94,14 @@
       }
     ],
     "LevelEndingItem": {
-      "$type": "Runner.LocomotionLevelItem, Assembly-CSharp",
+      "$type": "Runner.LocomotionLevelItem, Runner",
       "MaxSpeed": 8.0,
       "WalkSpeed": 1.5,
       "Acceleration": 8.0,
       "DamageToOther": 5,
       "CanAffordDamage": 50,
       "NPCAnimationSO": {
-        "$type": "Runner.HumanAnimationSO, Assembly-CSharp",
+        "$type": "Runner.HumanAnimationSO, Runner",
         "IdleAnimUrl": "",
         "WalkAnimUrl": "",
         "RunAnimUrl": "",
@@ -114,8 +114,11 @@
     }
   },
   "playerSO": {
-    "$type": "Runner.PlayerSO, Assembly-CSharp",
+    "$type": "Runner.PlayerSO, Runner",
     "PlayerUrl": "Runner/Creature/Player",
+    "IsFreeMove": false,
+    "SplitMoveCount": 2,
+    "MaxVisablePlayer": 15,
     "InitCount": 1,
     "MaxSpeed": 6.0,
     "WalkSpeed": 3.0,
@@ -123,7 +126,7 @@
     "DamageToOther": 1,
     "CanAffordDamage": 2,
     "PlayerAnimationSO": {
-      "$type": "Runner.HumanAnimationSO, Assembly-CSharp",
+      "$type": "Runner.HumanAnimationSO, Runner",
       "IdleAnimUrl": "",
       "WalkAnimUrl": "",
       "RunAnimUrl": "",
@@ -136,9 +139,9 @@
     "CameraDistance": 20.0
   },
   "generalSO": {
-    "$type": "Runner.GeneralSO, Assembly-CSharp",
+    "$type": "Runner.GeneralSO, Runner",
     "MusicSO": {
-      "$type": "Runner.MusicSO, Assembly-CSharp",
+      "$type": "Runner.MusicSO, Runner",
       "RuntimeMusic": "Runner/Music/excited",
       "WinMusic": "Runner/Music/success",
       "FailedMusic": "Runner/Music/down",
@@ -146,7 +149,7 @@
       "EnterTriggerMusic": "Runner/Music/trigger"
     },
     "VFXSO": {
-      "$type": "Runner.VFXSO, Assembly-CSharp",
+      "$type": "Runner.VFXSO, Runner",
       "OnPlayerHitVFX": "Runner/VFX/Flash/Flash_star_ellow_purple",
       "PlayerHitVFXScaleOffset": {
         "x": 1.0,

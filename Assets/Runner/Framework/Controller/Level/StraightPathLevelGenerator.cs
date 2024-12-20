@@ -15,17 +15,13 @@ namespace Runner
             this.GetSystem<UISystem>().Show(0);
             this.RegisterEvent<OnStartGenerateMap>(GenerateMap).UnRegisterWhenGameObjectDestroyed(this);
         }
-        private void GenerateMap(OnStartGenerateMap e)
-        {
-            Build().Forget();
-        }
+        private async void GenerateMap(OnStartGenerateMap e) => await Build();
         private async UniTask Build()
         {
-            foreach (Transform item in transform)
-            {
-                Destroy(item.gameObject);
-            }
+            foreach (Transform item in transform) Destroy(item.gameObject);
+            
             await UniTask.Yield();
+
             await Data.levelSO.GenerateMap(transform);
             
             this.SendCommand<OnMapGeneratedCmd>();

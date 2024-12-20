@@ -7,6 +7,7 @@ namespace Runner
 {
     public class BehavioursController : MonoBehaviour
     {
+        public bool CanBeAttack;
         public Vector3 ModelSize;
         public int CanAffordDamageCount = 1;
         public int Damge = 1;
@@ -18,14 +19,17 @@ namespace Runner
         
         void Start()
         {
+            
             _canAffordDamageCount = Mathf.Max(1,CanAffordDamageCount);
             Damge = Mathf.Max(1,Damge);
             IsDeath = false;
+            CanBeAttack = true;
             agent = GetComponent<AgentController>();
             animator = GetComponent<HumanAnimatorController>();
         }
         void OnEnable()
         {
+            CanBeAttack = true;
             animator?.ResetAnim();
             if(agent!=null)
             {
@@ -36,7 +40,14 @@ namespace Runner
         }
         void OnDisable()
         {
+            CanBeAttack = false;
             IsDeath = true;
+        }
+        public void Move(Vector3 pos , float stopdistance = 0.5f)
+        {
+            agent?.SetRun();
+            agent?.SetDestination(pos , stopdistance , false);
+            animator?.SetSpeed(agent.GetCurrentNormalizedSpeed());
         }
         public void Move(GameObject target , float stopdistance = 0.5f)
         {
@@ -118,12 +129,17 @@ namespace Runner
             foreach (var target in enemies)
             {
                 if (target == null) continue;
+
+                if(!target.gameObject.activeSelf) continue;
                 
                 if(target.IsDeath)
                 {
                     targetsToRemove.Add(target);
                     continue;
                 }
+
+                if(!target.CanBeAttack) continue;
+
                 float distance = Vector3.Distance(transform.position, target.transform.position);
                 
                 if (distance < shortestDistance)

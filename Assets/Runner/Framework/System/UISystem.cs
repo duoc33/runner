@@ -19,6 +19,7 @@ namespace Runner
         public GameObject InitUI()
         {
             uiCanvas = Object.Instantiate(Resources.Load<GameObject>(UICanvasPath));
+            uiCanvas.AddComponent<UIInfo>().Init();
             return uiCanvas;
         }
         public void Show(int index)

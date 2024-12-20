@@ -43,19 +43,19 @@ namespace Runner
         }
         public void PlayPlayerHitVFX(Vector3 pos)
         {
-            PlayVFX(hitPool, pos).SuppressCancellationThrow().Forget();
+            PlayVFX(hitPool, pos).SuppressCancellationThrow();
         }
         public void PlayDeathVFX(Vector3 pos)
         {
-            PlayVFX(deathPool, pos).SuppressCancellationThrow().Forget();
+            PlayVFX(deathPool, pos).SuppressCancellationThrow();
         }
         public void PlayEnterTriggerVFX(Vector3 pos)
         {
-            PlayVFX(triggerPool, pos).SuppressCancellationThrow().Forget();
+            PlayVFX(triggerPool, pos).SuppressCancellationThrow();
         }
         public void PlaySpawnVFX(Transform player , Vector3 localPos)
         {
-            PlayVFX(spawnPool , player , localPos).SuppressCancellationThrow().Forget();
+            PlayVFX(spawnPool , player , localPos).SuppressCancellationThrow();
         }
 
         /// <summary>

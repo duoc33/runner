@@ -13,20 +13,20 @@ namespace Runner
         private static string Path = "Runner/LevelPrefab/WorldCanvas";
         public override void DecorateWhenInstantiate(GameObject spawned, StraightPathLevelItem info)
         {
-            TriggerItemInfo iteminfo = new TriggerItemInfo();
-            iteminfo.PlayerCountDelta = PlayerCountChangeValue;
-            iteminfo.CenterOffset = info.model.GetCenterOffset();
             EnterTriggerItem enterTriggerItem = spawned.AddComponent<EnterTriggerItem>();
-            enterTriggerItem.itemInfo = iteminfo;
+            enterTriggerItem.PlayerCountDelta = PlayerCountChangeValue;
+            enterTriggerItem.CenterOffset = info.model.GetCenterOffset();
             enterTriggerItem.IsNeedDestroy = IsNeedDestroy;
             enterTriggerItem.DestroyTime = DestroyTime;
             enterTriggerItem.modelSize = info.model.GetModelSize();
-            if (!spawned.GetComponent<Rigidbody>())
+            
+            Rigidbody rigidbody = spawned.GetComponent<Rigidbody>();
+            if(rigidbody==null)
             {
-                Rigidbody rigidbody = spawned.AddComponent<Rigidbody>();
-                rigidbody.useGravity = false;
-                rigidbody.isKinematic = true;
+                rigidbody = spawned.AddComponent<Rigidbody>();
             }
+            rigidbody.useGravity = false;
+            rigidbody.isKinematic = true;
 
             if (IsNeedTextShow)
             {
@@ -36,7 +36,7 @@ namespace Runner
         }
         public override void DecorateWhenPostProcess(GameObject target, StraightPathLevelItem info)
         {
-
+            
         }
         private void AddText(Transform target, Vector3 centerOffset, Vector3 size, string data)
         {

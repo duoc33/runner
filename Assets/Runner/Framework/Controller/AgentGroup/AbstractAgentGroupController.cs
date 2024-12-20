@@ -34,9 +34,6 @@ namespace Runner
                 return;
             }
 
-            // 清理已死亡的角色
-            members?.RemoveAll(member => member == null);
-
             // 获取敌人群组并指挥攻击
             List<BehavioursController> enemies = GetAnotherGroup();
             
@@ -45,6 +42,9 @@ namespace Runner
                 CommandAttack(ref enemies);
             }
             OnUpdate();
+
+            // 清理已死亡的角色
+            members?.RemoveAll(member => member == null);
         }
         protected bool CheckDistanceTo(Transform target)=> Vector3.Distance(transform.position,target.position) < CheckDistance;
 

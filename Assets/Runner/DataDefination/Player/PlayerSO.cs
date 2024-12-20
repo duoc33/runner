@@ -11,6 +11,10 @@ namespace Runner
     {
         public string PlayerUrl;
 
+        public bool IsFreeMove = false; // 是否是自由移动移动
+        public int SplitMoveCount = 2 ; // 分割水平移动次数
+        public int MaxVisablePlayer = 15; //最大可见元素
+
         public int InitCount = 1;
         public float MaxSpeed = 6;
         public float WalkSpeed = 3f;
@@ -63,6 +67,9 @@ namespace Runner
         {
             PlayerGroupTarget = new GameObject("PlayerGroup");
             PlayerAgentGroup playerAgentGroup = PlayerGroupTarget.AddComponent<PlayerAgentGroup>();
+            playerAgentGroup.IsFreeMove = IsFreeMove;
+            playerAgentGroup.SplitMoveCount = SplitMoveCount;
+            playerAgentGroup.MaxVisablePlayer = MaxVisablePlayer;
             playerAgentGroup.playerSO = this;
             playerAgentGroup.GetArchitecture().GetModel<RunnerModel>().PlayerGroupTarget = playerAgentGroup.transform;
             PlayerGroupTargetMotion motion = PlayerGroupTarget.AddComponent<PlayerGroupTargetMotion>(); 
@@ -95,13 +102,20 @@ namespace Runner
 
         private GameObject PlayerGroupTarget;
         private PlayerPool playerPool;
-        public GameObject Spawn(Transform parent)
+        public GameObject Spawn(Transform parent )
         {
             GameObject player = playerPool.Get();
             player.transform.position =  parent.position ;
-            player.transform.rotation =  parent.rotation ;
+            player.transform.rotation =  Quaternion.identity ;
             return player;
         }
+        // public GameObject Spawn(Vector3 position)
+        // {
+        //     GameObject player = playerPool.Get();
+        //     player.transform.position =  position ;
+        //     player.transform.rotation =  Quaternion.identity ;
+        //     return player;
+        // }
         
         
         public override void OnDestroy()

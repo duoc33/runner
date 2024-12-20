@@ -1,0 +1,185 @@
+[
+    {
+        "$type": "Runner.RunnerData, Runner",
+        "allConfig": {
+            "$type": "Runner.AllConfig, Runner",
+            "levelSO": {
+                "$type": "Runner.StraightPathLevelSO, Runner",
+                "Rule": {
+                    "$type": "Runner.StraightPathLevelRuleSO, Runner",
+                    "Seed": 5498,
+                    "MapSize": {
+                        "x": 10,
+                        "y": 300
+                    },
+                    "GridSize": {
+                        "x": 1,
+                        "y": 1,
+                        "z": 1
+                    },
+                    "TriggerTypeProbability": 0.541,
+                    "LocomotionTypeProbability": 0.411,
+                    "SpawnColumnSpacing": 20,
+                    "SpawnRowSpacing": 0.3,
+                    "EndingRemainLength": 10,
+                    "RuleType": "StrictSequentialSpawn",
+                    "TriggerItemRowCountOnStart": 3,
+                    "TriggerTypeSequenceSpawnCount": 2
+                },
+                "Grounds": [
+                    {
+                        "$type": "Runner.GroundLevelItem, Runner",
+                        "ItemUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/11/28/2024-11-28_17-14-33_catalog_2024.11.28.08.51.22.json#CubeTileGreen",
+                        "Properbility": 0.117
+                    },
+                    {
+                        "$type": "Runner.GroundLevelItem, Runner",
+                        "ItemUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/11/28/2024-11-28_17-14-33_catalog_2024.11.28.08.51.22.json#CubeTileGrey",
+                        "Properbility": 0.415
+                    },
+                    {
+                        "$type": "Runner.GroundLevelItem, Runner",
+                        "ItemUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/11/28/2024-11-28_17-14-33_catalog_2024.11.28.08.51.22.json#CubeTileYellow",
+                        "Properbility": 0.514
+                    }
+                ],
+                "TriggerItems": [
+                    {
+                        "$type": "Runner.OnTriggerLevelItem, Runner",
+                        "PlayerCountChangeValue": -2,
+                        "IsNeedTextShow": true,
+                        "IsObstacle": false,
+                        "IsNeedDestroy": true,
+                        "DestroyTime": 0,
+                        "ItemUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/11/28/2024-11-28_17-14-33_catalog_2024.11.28.08.51.22.json#Penalty",
+                        "Properbility": 0.285
+                    },
+                    {
+                        "$type": "Runner.OnTriggerLevelItem, Runner",
+                        "PlayerCountChangeValue": 5,
+                        "IsNeedTextShow": true,
+                        "IsObstacle": false,
+                        "IsNeedDestroy": true,
+                        "DestroyTime": 0,
+                        "ItemUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/11/28/2024-11-28_17-14-33_catalog_2024.11.28.08.51.22.json#Reward",
+                        "Properbility": 0.641
+                    },
+                    {
+                        "$type": "Runner.OnTriggerLevelItem, Runner",
+                        "PlayerCountChangeValue": -2,
+                        "IsNeedTextShow": false,
+                        "IsObstacle": false,
+                        "IsNeedDestroy": true,
+                        "DestroyTime": 0,
+                        "ItemUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/11/28/2024-11-28_17-14-33_catalog_2024.11.28.08.51.22.json#Obstacle",
+                        "Properbility": 0.3
+                    }
+                ],
+                "Locomotions": [
+                    {
+                        "$type": "Runner.LocomotionLevelItem, Runner",
+                        "MaxSpeed": 8,
+                        "WalkSpeed": 1.5,
+                        "Acceleration": 8,
+                        "DamageToOther": 1,
+                        "CanAffordDamage": 1,
+                        "colliderType": "Capsule",
+                        "Properbility": 1,
+                        "ItemUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/11/14/2024-11-14_15-46-21_catalog_2024.11.14.04.15.44.json#SpacemanDefault",
+                        "NPCAnimationSO": {
+                            "$type": "Runner.HumanAnimationSO, Runner",
+                            "IdleAnimUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/09/20/catalog_2024.09.20.09.08.07.json#Unarmed-Idle-Static",
+                            "WalkAnimUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/12/05/2024-12-05_14-22-28_catalog_2024.12.05.06.08.20.json#Walking",
+                            "RunAnimUrl": "",
+                            "AttackAnimUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/09/24/catalog_2024.09.24.02.40.17.json#H_Kick Left",
+                            "DeathAnimUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/09/24/catalog_2024.09.24.02.40.17.json#H_Death2"
+                        }
+                    }
+                ],
+                "LevelEndingItem": {
+                    "$type": "Runner.LocomotionLevelItem, Runner",
+                    "MaxSpeed": 8,
+                    "WalkSpeed": 1.5,
+                    "Acceleration": 8,
+                    "DamageToOther": 5,
+                    "CanAffordDamage": 50,
+                    "colliderType": "Capsule",
+                    "Properbility": 1,
+                    "ItemUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/11/14/2024-11-14_15-46-21_catalog_2024.11.14.04.15.44.json#CowboyDefault",
+                    "NPCAnimationSO": {
+                        "$type": "Runner.HumanAnimationSO, Runner",
+                        "IdleAnimUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/09/20/catalog_2024.09.20.09.08.07.json#Unarmed-Idle-Static",
+                        "WalkAnimUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/12/05/2024-12-05_14-22-28_catalog_2024.12.05.06.08.20.json#Walking",
+                        "RunAnimUrl": "",
+                        "AttackAnimUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/09/20/catalog_2024.09.20.09.26.03.json#Mutant Jump Attack",
+                        "DeathAnimUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/12/05/2024-12-05_14-22-28_catalog_2024.12.05.06.08.20.json#StandingReactDeathBackward"
+                    }
+                }
+            },
+            "playerSO": {
+                "$type": "Runner.PlayerSO, Runner",
+                "PlayerUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/11/14/2024-11-14_15-46-21_catalog_2024.11.14.04.15.44.json#VeteranDefault",
+                "IsFreeMove": false,
+                "SplitMoveCount": 2,
+                "MaxVisablePlayer": 15,
+                "InitCount": 1,
+                "MaxSpeed": 6,
+                "WalkSpeed": 3,
+                "Acceleration": 8,
+                "DamageToOther": 1,
+                "CanAffordDamage": 2,
+                "MoveSpeed": 5,
+                "HorizontalMoveSpeed": 8,
+                "CameraVerticalLength": 10,
+                "CameraDistance": 25,
+                "PlayerAnimationSO": {
+                    "$type": "Runner.HumanAnimationSO, Runner",
+                    "IdleAnimUrl": "",
+                    "WalkAnimUrl": "",
+                    "RunAnimUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/12/05/2024-12-05_14-22-28_catalog_2024.12.05.06.08.20.json#Walking",
+                    "AttackAnimUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/09/24/catalog_2024.09.24.02.40.17.json#H_Punching Left",
+                    "DeathAnimUrl": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/12/05/2024-12-05_14-22-28_catalog_2024.12.05.06.08.20.json#StandingReactDeathBackward"
+                }
+            },
+            "generalSO": {
+                "$type": "Runner.GeneralSO, Runner",
+                "MusicSO": {
+                    "$type": "Runner.MusicSO, Runner",
+                    "RuntimeMusic": "https://agi-assets.s3.amazonaws.com/game/audio-mp3/2024/11/28/excited.mp3",
+                    "WinMusic": "https://agi-assets.s3.amazonaws.com/game/audio-mp3/2024/12/05/VICTORY%E8%83%9C%E5%88%A9_%E8%80%B3%E8%81%86%E7%BD%91_%5B%E5%A3%B0%E9%9F%B3ID%EF%BC%9A37263%5D.mp3",
+                    "FailedMusic": "https://agi-assets.s3.amazonaws.com/game/audio-mp3/2024/11/28/down.mp3",
+                    "CombatMusic": "https://agi-assets.s3.amazonaws.com/game/audio-mp3/2024/11/28/excited.mp3",
+                    "EnterTriggerMusic": "https://agi-assets.s3.amazonaws.com/game/audio-wav/2024/12/05/%E4%BA%BA%E7%BE%A4%E9%BC%93%E6%8E%8C%E6%AC%A2%E5%91%BC_%E8%80%B3%E8%81%86%E7%BD%91_%5B%E5%A3%B0%E9%9F%B3ID%EF%BC%9A13112%5D.wav"
+                },
+                "VFXSO": {
+                    "$type": "Runner.VFXSO, Runner",
+                    "OnPlayerHitVFX": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/11/28/2024-11-28_17-17-07_catalog_2024.11.28.08.50.55.json#Flash_star_ellow_purple",
+                    "PlayerHitVFXScaleOffset": {
+                        "x": 1,
+                        "y": 1,
+                        "z": 1
+                    },
+                    "OnPlayerDeathVFX": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/11/28/2024-11-28_17-17-07_catalog_2024.11.28.08.50.55.json#Area_star_ellow",
+                    "PlayerDeathVFXScaleOffset": {
+                        "x": 1,
+                        "y": 1,
+                        "z": 1
+                    },
+                    "OnPlayerSpawnVFX": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/11/28/2024-11-28_17-17-07_catalog_2024.11.28.08.50.55.json#Area_fire_red",
+                    "PlayerSpawnVFXScaleOffset": {
+                        "x": 1,
+                        "y": 1,
+                        "z": 1
+                    },
+                    "OnPlayerEnterTriggerVFX": "https://agi-assets.s3.amazonaws.com/game/catalog/2024/11/28/2024-11-28_17-17-07_catalog_2024.11.28.08.50.55.json#Flash_blue_purple",
+                    "PlayerEnterTriggerVFXScaleOffset": {
+                        "x": 1,
+                        "y": 1,
+                        "z": 1
+                    }
+                }
+            }
+        },
+        "uiConfig": null
+    }
+]

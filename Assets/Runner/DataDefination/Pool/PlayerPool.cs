@@ -19,7 +19,7 @@ namespace Runner
         private TimeSpan delayTime = TimeSpan.FromSeconds(1.8f);
         private void WhenPlayerDestroy(GameObject player)
         {
-            PlayerDeath(player).SuppressCancellationThrow().Forget();
+            PlayerDeath(player).SuppressCancellationThrow();
         }
         private async UniTask PlayerDeath(GameObject player)
         {

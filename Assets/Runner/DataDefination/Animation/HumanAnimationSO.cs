@@ -31,7 +31,6 @@ namespace Runner
         public override async UniTask Download()
         {
             runtimeAnimatorController ??= Resources.Load<RuntimeAnimatorController>(templatePath);
-            
             AnimationClip IdleClip = await DownloadAnimationClip(IdleAnimUrl);
             AnimationClip WalkClip = await DownloadAnimationClip(WalkAnimUrl);
             AnimationClip RunClip = await DownloadAnimationClip(RunAnimUrl);
@@ -46,10 +45,12 @@ namespace Runner
             animatorOverrideController[AttackClipInnerName] = AttackClip;
             animatorOverrideController[DeathClipInnerName] = DeathClip;
         }
+
         public void Apply(GameObject target)
         {
             Animator animator = target.GetComponentInChildren<Animator>();
             if(animator == null || animator.avatar == null) return;
+            animator.applyRootMotion = false;
             animator.runtimeAnimatorController = animatorOverrideController;
             target.AddComponent<HumanAnimatorController>();
         }

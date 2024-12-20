@@ -95,6 +95,10 @@ namespace Runner
         [NonSerialized]
         public List<Transform> LocomotionGroup = new List<Transform>();
 
+        [JsonIgnore]
+        [NonSerialized]
+        public List<List<EnterTriggerItem>> Triggers;
+
         /// <summary>
         /// 地板上的场景物体生成
         /// </summary>
@@ -123,6 +127,10 @@ namespace Runner
             int triggerCountInInit = TriggerItemRowCountOnStart;
             bool Init = false;
 
+
+            int triggerIndex = 0;
+            Triggers = new List<List<EnterTriggerItem>>();
+
             while (currentLength < length)
             {
                 currentLength += SpawnColumnSpacing;
@@ -147,19 +155,31 @@ namespace Runner
                         if (remainsWidth < 0) break;
 
                         totalWidthForItem += itemWidth + spacing;
+                        
                         tempRecords.Add(LevelItem);
                     }
 
                     float offsetinit = midX - (leftStartX + totalWidthForItem) / 2;
+
+                    Triggers.Add(new List<EnterTriggerItem>());
 
                     foreach (StraightPathLevelItem item in tempRecords)
                     {
                         float itemWidth = item.model.GetModelSize().x;
                         currentPosX += itemWidth;
                         pos = new Vector3(currentPosX - itemWidth / 2 + offsetinit, GridSize.y, currentLength + BottomStartZ);
-                        item.Spawn(pos, parent);
+                        
+                        EnterTriggerItem enterTriggerItem = item.Spawn(pos, parent).GetComponent<EnterTriggerItem>();
+                        if(enterTriggerItem!=null)
+                        {
+                            enterTriggerItem.TriggerIndex = triggerIndex;
+                            Triggers[triggerIndex].Add(enterTriggerItem);
+                        }
+                        
                         currentPosX += spacing;
                     }
+
+                    triggerIndex ++;
 
                     tempRecords.Clear();
                     triggerCountInInit -= 1;
@@ -203,6 +223,8 @@ namespace Runner
 
                 float offset = midX - (leftStartX + totalWidthForItem) / 2 ;
                 Transform group = null;
+
+                Triggers.Add(new List<EnterTriggerItem>());
                 foreach (StraightPathLevelItem item in tempRecords)
                 {
                     float itemWidth = item.model.GetModelSize().x;
@@ -220,10 +242,17 @@ namespace Runner
                     }
                     else
                     {
-                        item.Spawn(pos, parent) ;
+                        // OnTriggerLevelItem
+                        EnterTriggerItem enterTriggerItem = item.Spawn(pos, parent).GetComponent<EnterTriggerItem>();
+                        if(enterTriggerItem!=null)
+                        {
+                            enterTriggerItem.TriggerIndex = triggerIndex;
+                            Triggers[triggerIndex].Add(enterTriggerItem);
+                        }
                     }
                     currentPosX += spacing ;
                 }
+                triggerIndex ++;
                 
                 if(index == 0) // 证明是Trigger类型
                 {
@@ -241,8 +270,8 @@ namespace Runner
                 index %= ListSpawnFuncs.Length;
                 
                 tempRecords.Clear();
-                
             }
+
             if(Boss != null)
             {
                 currentLength -= SpawnColumnSpacing;
@@ -254,10 +283,6 @@ namespace Runner
                     group.position = pos;
                     LastLevelItem = Boss.Spawn(pos, group);
                     LastLevelItem.GetComponent<NavMeshAgent>().enabled = false;
-                    // Rigidbody rigidbody = LastLevelItem.AddComponent<Rigidbody>();
-                    // rigidbody.isKinematic = true;
-                    // rigidbody.useGravity = false;
-                    // group.gameObject.isStatic = true;
                     LocomotionGroup.Add(group);
                 }else{
                     LastLevelItem = Boss.Spawn(pos, parent);
@@ -284,11 +309,9 @@ namespace Runner
             }
             return null;
         }
-
-
-        // private void OnDestroy() {
-        //     LocomotionGroup.Clear();
-        //     Destroy(LastLevelItem);
-        // }
+        private void OnDestroy() {
+            LocomotionGroup?.Clear();
+            Destroy(LastLevelItem);
+        }
     }
 }

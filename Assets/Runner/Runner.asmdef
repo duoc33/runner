@@ -1,0 +1,29 @@
+{
+    "name": "Runner",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7478a3fae2c3406bba8a241afa129fe8",
+        "GUID:03a557995662468984915e04f84f376d",
+        "GUID:cfd26284513d69d4785b53bbb4723a03",
+        "GUID:c2bc948ea6b6e934abb8cd263a869154",
+        "GUID:4d58b7fd5c0c32a4fb5ac3818f79d85a",
+        "GUID:e57f0dc0116740ca994b781805a3037a",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:d284f909ed5f9d6449d2a43395b38b30",
+        "GUID:b535a53907f44fe88b731a432c72c1cf",
+        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:9e24947de15b9834991c9d8411ea37cf",
+        "GUID:84651a3751eca9349aac36a66bba901b",
+        "Managers.Manager"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -4,32 +4,48 @@ using QFramework;
 using UnityEngine;
 namespace Runner
 {
-    public struct TriggerItemInfo
-    {
-        public int PlayerCountDelta;
-        public Vector3 CenterOffset;
-    }
     public class EnterTriggerItem : RunnerController
     {
+        public int TriggerIndex;
+        public int PlayerCountDelta;
+        public Vector3 CenterOffset;
         public bool IsNeedDestroy;
         public float DestroyTime;
-        private bool isTriggered;
+        public bool isTriggered;
         public Vector3 modelSize;
-        public TriggerItemInfo itemInfo;
         TriggerEnterLevelItemCmd triggerCmd;
         static string PlayerTag = "Player"; 
+
+        private List<EnterTriggerItem> triggers ;
         void Start()
         {
             isTriggered = false;
             triggerCmd = new TriggerEnterLevelItemCmd();
+            triggers = Data.levelSO.Rule.Triggers[TriggerIndex];
         }
+        
         void OnTriggerEnter(Collider other)
         {
-            if(!other.CompareTag(PlayerTag) || isTriggered) return;
+            if(isTriggered) return;
+
+            if(!other.CompareTag(PlayerTag)) return;
+            foreach (var item in triggers)
+            {
+                item.isTriggered = true;
+                if(item.IsNeedDestroy)
+                {
+                    if(item != null)
+                    {
+                        Destroy(item.gameObject,item.DestroyTime);
+                    }
+                    
+                }
+            }
+            triggers.Clear();
             isTriggered = true;
             triggerCmd.triggerTrans = this.transform;
-            triggerCmd.CenterOffset = itemInfo.CenterOffset;
-            triggerCmd.AddCount = itemInfo.PlayerCountDelta;
+            triggerCmd.CenterOffset = CenterOffset;
+            triggerCmd.AddCount = PlayerCountDelta;
             triggerCmd.triggerPos = transform.position;
             triggerCmd.modelSize = modelSize;
             this.SendCommand(triggerCmd);
@@ -39,6 +55,7 @@ namespace Runner
             }
             // Destroy(gameObject);
         }
+
     }
     public class TriggerEnterLevelItemCmd : AbstractCommand
     {

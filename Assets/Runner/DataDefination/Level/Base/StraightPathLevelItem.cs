@@ -27,7 +27,7 @@ namespace Runner
             model ??= CreateInstance<ModelSO>();
             ModelConfig(model);
             GameObject newGameObject = model.PostProcess(target);
-            HandlePostProcess(newGameObject,model);
+            HandlePostProcess(newGameObject , model);
             ProcessComponents(newGameObject);
             return newGameObject;
         }
@@ -35,6 +35,7 @@ namespace Runner
         {
             return await UniTask.FromResult(target);
         }
+
         public GameObject Spawn(Vector3 pos , Transform parent)
         {
             GameObject spawn = Instantiate(model.GetPrefab(),pos,Quaternion.Euler(Vector3.up * 180 ),parent);
@@ -45,6 +46,7 @@ namespace Runner
             }
             return spawn;
         }
+        
         public override void OnDestroy()
         {
             base.OnDestroy();
@@ -70,7 +72,6 @@ namespace Runner
         {
             
         }
-
 
         private void ProcessComponents(GameObject newGameObject)
         {

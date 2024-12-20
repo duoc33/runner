@@ -11,15 +11,9 @@ namespace Runner
         public StraightPathLevelRuleSO Rule;
         public List<GroundLevelItem> Grounds = new List<GroundLevelItem>();
         private float total_ground = 0;
-
         
         public List<OnTriggerLevelItem> TriggerItems = new List<OnTriggerLevelItem>();
         private float total_trigger = 0;
-
-        // [Range(0,1)]
-        // public float ObstacleTypeProbability = 0.5f;
-        // public List<ObstacleLevelItem> ObstacleItems = new List<ObstacleLevelItem>();
-        // private float total_obstacle = 0;
 
         public List<LocomotionLevelItem> Locomotions = new List<LocomotionLevelItem>();
         private float total_locomotions = 0;
@@ -34,7 +28,6 @@ namespace Runner
         {
             total_ground = await DownloadItems(Grounds);
             total_trigger = await DownloadItems(TriggerItems);
-            // total_obstacle = await DownloadItems(ObstacleItems);
             total_locomotions = await DownloadItems(Locomotions);
             totalTypeProbability = Rule.TriggerTypeProbability + Rule.LocomotionTypeProbability;
             if(LevelEndingItem!=null)
@@ -43,6 +36,7 @@ namespace Runner
             }
         }
         public Bounds GetMapBounds() => navMeshBuilder.GetBounds();
+        
         public override void StartMixComponents()
         {
             if(Generator!=null)
@@ -52,7 +46,9 @@ namespace Runner
             navMeshBuilder = new NavMeshRelativeBuilder();
             Generator = new GameObject("Map").AddComponent<StraightPathLevelGenerator>();
         }
+        
         private NavMeshRelativeBuilder navMeshBuilder;
+        
         public async UniTask GenerateMap(Transform parent)
         {
             StraightPathLevelRuleSO.GridSizeValue = Rule.GridSize;
@@ -89,7 +85,6 @@ namespace Runner
         
         private GroundLevelItem ChooseGround() => ChooseItem(Grounds, total_ground);
         private OnTriggerLevelItem ChooseTriggerItem() => ChooseItem(TriggerItems, total_trigger);
-        // private ObstacleLevelItem ChooseObstacleItem() => ChooseItem(ObstacleItems, total_obstacle);
         private LocomotionLevelItem ChooseLocomotionItem() => ChooseItem(Locomotions, total_locomotions);
 
         private static T ChooseItem<T>(List<T> items, float totalWeight) where T : StraightPathLevelItem {
@@ -112,19 +107,19 @@ namespace Runner
             foreach (var item in items) 
             {
                 totalProperbility += item.Properbility;
+                
                 await item.Download();
             }
             return totalProperbility;
         }
+
         public override void OnDestroy()
         {
             if(Generator!=null)
             {
                 Destroy(Generator.gameObject);
             }
-
             navMeshBuilder?.DestroyNavMesh();
-            
             if(Rule.LocomotionGroup != null && Rule.LocomotionGroup.Count > 0)
             {
                 foreach (var item in Rule.LocomotionGroup)
@@ -136,7 +131,6 @@ namespace Runner
                 }
                 Rule.LocomotionGroup?.Clear();
             }
-            
             Destroy(Rule.LastLevelItem);
         }
     }
