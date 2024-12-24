@@ -24,7 +24,7 @@ namespace Runner
         {
             Runner.OnDestroy();
             SOBase.Clear();
-            SOBase.InitLocal();
+            SOBase.InitServer();
             await Runner.Download();
             Runner.StartMixComponents();
         }

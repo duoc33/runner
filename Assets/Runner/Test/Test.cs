@@ -2,7 +2,6 @@ using UnityEngine;
 using Runner;
 using ScriptableObjectBase;
 using Cysharp.Threading.Tasks;
-using Foundation;
 
 public class Test : RunnerController
 {
@@ -13,11 +12,12 @@ public class Test : RunnerController
         base.Awake();
         SOBase.InitLocal();
     }
-    void Start()
+    async void Start()
     {
         // Serializer.WriteAllText(Serializer.Serialize(allConfig));
-        Run().Forget();
+        await Run();
     }
+    
     public async UniTask Run()
     {
         await allConfig.Download();

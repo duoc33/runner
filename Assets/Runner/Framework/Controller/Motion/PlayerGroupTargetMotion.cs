@@ -89,6 +89,13 @@ namespace Runner
         }
         private void InitCamera()
         {
+            GameObject mcamera = Camera.main.gameObject;
+            mcamera.TryGetComponent(out Cinemachine.CinemachineBrain brain);
+            if(brain==null)
+            {
+                mcamera.AddComponent<CinemachineBrain>();
+            }
+
             virtualCamera ??= Instantiate(Resources.Load<CinemachineVirtualCamera>(CinemachineCameraPath));
             cinemachineTarget = new GameObject("CinemachineTarget").transform;
             cinemachineTarget.position = Data.PlayerStartPos;

@@ -1,12 +1,5 @@
 {
   "dependencies": {
-    "com.code-philosophy.hybridclr": {
-      "version": "https://github.com/focus-creative-games/hybridclr_unity.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "4d0fef095b5af314b06e204ea0f6c17681f3ec3c"
-    },
     "com.opencoord.aigc.managers": {
       "version": "https://git.agiplusone.com/apo/engineering/portalhiker-eng/unity-frontend/aigc-game/portablemanagers.git#dev_guangyu",
       "depth": 0,
